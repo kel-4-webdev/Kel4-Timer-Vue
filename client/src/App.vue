@@ -75,7 +75,7 @@ export default {
       this.ticker = setInterval(() => {
         this.currentTimer++;
         this.formattedTime = this.formatTime(this.currentTimer);
-      }, 250)
+      }, 1000)
     },
     formatTime (seconds) {
       let measuredTime = new Date(null);
