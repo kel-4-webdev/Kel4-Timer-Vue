@@ -11,6 +11,27 @@
         @pause="pause"
         @stop="stop"
       />
+
+      <div style="width: 100%">
+        <v-card
+          class="justify-center mb-6"
+          :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
+          flat
+          tile
+        >
+          <v-btn color="success" elevation="2">Add</v-btn>
+          <v-btn color="error" elevation="2">Remove</v-btn>
+        </v-card>
+      </div>
+
+      <Timer
+        :timer="formattedTime"
+        :state="timerState"
+        @start="start"
+        @lap="lap"
+        @pause="pause"
+        @stop="stop"
+      />
     </v-content>
 
     <v-snackbar
@@ -42,7 +63,7 @@ export default {
       ticker: undefined,
       laps: [],
       latestLap: "",
-      snackbar: false
+      snackbar: false,
     }
   },
   methods: {
