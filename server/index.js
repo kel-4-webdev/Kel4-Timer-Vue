@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const PORT = 3000 
 
-app.get('/', async(req,res)=>{
+app.get('/about', async(req,res)=>{
     res.send("COBAIN 1")
 })
 
