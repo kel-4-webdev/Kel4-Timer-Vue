@@ -16,6 +16,11 @@
         <v-list-tile v-for="(lap, index) in history" :key="index">
           History {{ index + 1 }}: {{ lap.formattedTime }}
         </v-list-tile>
+
+        <v-list-tile v-for="(lap1, index1) in history1" :key="index1">
+          History {{ index1 + 1 }}: {{ lap1.formattedTime1 }}
+        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
 	</nav>
@@ -24,7 +29,7 @@
 <script>
 export default {
   name: 'Navbar',
-  props: ['history'],
+  props: ['history', 'history1'],
   data () {
     return {
       isDrawerOpen: false

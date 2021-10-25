@@ -18,20 +18,20 @@
           flat
           tile
         >
-          <v-btn color="success" elevation="2">Add</v-btn>
-          <v-btn color="error" elevation="2">Remove</v-btn>
+          <v-btn color="success" elevation="2" v-on:click="isHidden = false">Add</v-btn>
+          <v-btn color="error" elevation="2" v-on:click="isHidden = true">Remove</v-btn>
         </v-card>
       </div>
-
-      <Timer
-        :timer="formattedTime"
-        :state="timerState"
-        @start="start"
-        @pause="pause"
-        @stop="stop"
+      <Timer v-if="!isHidden"
+        :timer="formattedTime1"
+        :state="timerState1"
+        @start="start1"
+        @pause="pause1"
+        @stop="stop1"
       />
-    </v-content>
 
+    </v-content>
+    
     <v-snackbar
       v-model="snackbar"
       color="info"
@@ -40,6 +40,16 @@
       New History {{ this.latestHistory }}
       <v-btn dark flat @click="snackbar = false">Close</v-btn>
     </v-snackbar>
+
+    <v-snackbar
+      v-model="snackbar1"
+      color="info"
+      :timeout="2000"
+    >
+      New History {{ this.latestHistory1 }}
+      <v-btn dark flat @click="snackbar1 = false">Close</v-btn>
+    </v-snackbar>
+
   </v-app>
 </template>
 
@@ -56,12 +66,20 @@ export default {
   data () {
     return {
       timerState: 'stopped',
+      timerState1: 'stopped',
       currentTimer: 0,
+      currentTimer1: 0,
       formattedTime: "00:00:00",
+      formattedTime1: "00:00:00",
       ticker: undefined,
+      ticker1: undefined,
       history: [],
+      history1: [],
       latestHistory: "",
+      latestHistory1: "",
       snackbar: false,
+      snackbar1: false,
+      isHidden : true,
     }
   },
   methods: {
@@ -91,13 +109,47 @@ export default {
       this.ticker = setInterval(() => {
         this.currentTimer++;
         this.formattedTime = this.formatTime(this.currentTimer);
-      }, 250)
+      }, 1000)
     },
     formatTime (seconds) {
       let measuredTime = new Date(null);
       measuredTime.setSeconds(seconds);
       let MHSTime = measuredTime.toISOString().substr(11, 8);
       return MHSTime;
+    },
+    start1 () {
+      if (this.timerState1 !== 'running') {
+        this.tick1();
+        this.timerState1 = 'running';
+      }
+    },
+    pause1 () {
+      window.clearInterval(this.ticker1);
+      this.timerState1 = 'paused';
+    },
+    stop1 () {
+      this.snackbar1 = true;
+      this.history1.push({
+        seconds: this.currentTimer1,
+        formattedTime1: this.formatTime1(this.currentTimer1)
+      });
+      this.latestHistory1 = this.formatTime1(this.currentTimer1);
+      window.clearInterval(this.ticker1)
+      this.currentTimer1 = 0;
+      this.formattedTime1 = "00:00:00";
+      this.timerState1 = "stopped";
+    },
+    tick1 () {
+      this.ticker1 = setInterval(() => {
+        this.currentTimer1++;
+        this.formattedTime1 = this.formatTime1(this.currentTimer1);
+      }, 1000)
+    },
+    formatTime1 (seconds) {
+      let measuredTime1 = new Date(null);
+      measuredTime1.setSeconds(seconds);
+      let MHSTime1 = measuredTime1.toISOString().substr(11, 8);
+      return MHSTime1;
     }
   }
 }
