@@ -46,7 +46,7 @@ npm run lint
 ## Trouble Like This ?
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/61140070/138977060-860dd623-ed0c-4c02-858d-bc73c6835970.jpeg" width="100">
+<img src="https://user-images.githubusercontent.com/61140070/138977060-860dd623-ed0c-4c02-858d-bc73c6835970.jpeg">
 </p>
 
 Try :
