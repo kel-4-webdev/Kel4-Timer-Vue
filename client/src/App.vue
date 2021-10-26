@@ -26,8 +26,8 @@
           tile
         >
           <v-container style="display:flex; justify-content:center">
-            <v-btn color="success" elevation="2" v-on:click="isHidden = false">+</v-btn>
-            <v-btn color="error" elevation="2" v-on:click="isHidden = true">-</v-btn>
+            <v-btn color="success" elevation="2" v-on:click="isHidden = false">ADD TIMER</v-btn>
+            <v-btn color="error" elevation="2" v-on:click="isHidden = true">REMOVE TIMER</v-btn>
           </v-container>
         </v-card>
       </div>
