@@ -47,6 +47,16 @@
 <script>
 export default {
   name: 'Timer',
-  props: ['timer', 'state']
+  props: ['timer', 'state'],
+  mounted(){
+    axios
+      .get('http://localhost:8080/pevn/history')
+      .then(response => {
+          this.timer_history = response.data
+        console.log(response.data)
+      })
+      .catch(error => console.log(error))
+  }
 }
+
 </script>

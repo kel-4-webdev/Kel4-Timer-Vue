@@ -59,6 +59,7 @@
 <script>
 import Navbar from '@/components/Navbar';
 import Timer from '@/components/Timer';
+import axios from 'axios'
 
 export default {
   name: 'App',
@@ -119,7 +120,9 @@ export default {
         this.currentTimer1 = parseInt(getTime1)
       }
         this.formattedTime1 = this.formatTime(this.currentTimer1)
-    })
+    },
+    
+    )
   },
   data () {
     return {
@@ -157,6 +160,14 @@ export default {
         seconds: this.currentTimer,
         formattedTime: this.formatTime(this.currentTimer)
       });
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", 'http://localhost:8081/pevn/history', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+        first_timer: this.currentTimer,
+        second_timer: this.currentTimer,
+        created_on: new Date(),
+    }));
       this.latestHistory = this.formatTime(this.currentTimer);
       window.clearInterval(this.ticker);
       this.currentTimer = 0;

@@ -4,9 +4,9 @@ const db = require('../db/index')
 
 router.get('/', async(req, res, next) => {
     try {
-        let sql = `SELECT * FROM timer_history`
-        let result = (await db.query(sql)).rows
-        res.send(result)
+        const sqlText = `SELECT * FROM timer_history`;
+        const result = (await db.query(sqlText)).rows
+        res.json(result)
     } catch (error) {
         console.error(error)
 
