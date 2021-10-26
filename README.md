@@ -7,7 +7,7 @@ Terdapat banyak alat lain untuk melakukan pencatatan waktu diluar sana. Namun, d
 ## Build With 
 <p align="center">
 Vue.Js
-<img src="http://assets.stickpng.com/images/58482acecef1014c0b5e4a1e.png" width="100">
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png" width="100">
 </p
 
 ## Installation
