@@ -13,25 +13,28 @@
         @pause="pause"
         @stop="stop"
       />
-
-      <div style="width: 100%">
-        <v-card
-          class="justify-center mb-6"
-          :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
-          flat
-          tile
-        >
-          <v-btn color="success" elevation="2" v-on:click="isHidden = false">Add</v-btn>
-          <v-btn color="error" elevation="2" v-on:click="isHidden = true">Remove</v-btn>
-        </v-card>
-      </div>
-      <Timer v-if="!isHidden"
+       <Timer v-if="!isHidden"
         :timer="formattedTime1"
         :state="timerState1"
         @start="start1"
         @pause="pause1"
         @stop="stop1"
       />
+      <div style="width: 100%">
+        <v-card
+        
+          class="justify-center mb-6"
+          :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
+          flat
+          tile
+        >
+          <v-container style="display:flex; justify-content:center">
+            <v-btn color="success" elevation="2" v-on:click="isHidden = false">ADD TIMER</v-btn>
+            <v-btn color="error" elevation="2" v-on:click="isHidden = true">REMOVE TIMER</v-btn>
+          </v-container>
+        </v-card>
+      </div>
+     
 
     </v-content>
     
@@ -173,7 +176,7 @@ export default {
     formatTime (seconds) {
       let measuredTime = new Date(null);
       measuredTime.setSeconds(seconds);
-      let MHSTime = measuredTime.toISOString().substr(11, 8);
+      var MHSTime = measuredTime.toISOString().substr(11, 8);
       return MHSTime;
     },
     timeToSecond(varDate) {
@@ -183,7 +186,7 @@ export default {
     start1 () {
       if (this.timerState1 !== 'running') {
         this.tick1();
-        this.timerState1 = 'running';
+        this.timerState1 = 'running'
       }
     },
     pause1 () {
