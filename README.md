@@ -6,9 +6,9 @@ Terdapat banyak alat lain untuk melakukan pencatatan waktu diluar sana. Namun, d
 
 ## Build With 
 <p align="center">
-Vue.Js
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png" width="100">
-</p
+  <h2> Vue.js </h2>
+</p>
 
 ## Installation
 
