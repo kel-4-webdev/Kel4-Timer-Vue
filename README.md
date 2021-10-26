@@ -43,6 +43,18 @@ npm run test
 npm run lint
 ```
 
+## Trouble Like This ?
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/61140070/138977060-860dd623-ed0c-4c02-858d-bc73c6835970.jpeg" width="100">
+</p>
+
+Try :
+```
+npm install sass@~1.32 sass-loader deepmerge -D
+```
+
+
 ## Team
 1. Muhammad Sakhi Hartanto ( Ketua )
 2. Muhammad Rafi Kamil
