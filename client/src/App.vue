@@ -1,6 +1,9 @@
 <template>
   <v-app>
-    <Navbar :history="history" />
+    <Navbar 
+      :history="history" 
+      :history1="history1"  
+    />
 
     <v-content>
       <Timer
@@ -69,8 +72,16 @@ export default {
       localStorage.setItem('Closed-Time', new Date().getTime());
       localStorage.setItem('Time', this.currentTimer);
       localStorage.setItem('Status', this.timerState);
+      localStorage.setItem('Time1', this.currentTimer1);
+      localStorage.setItem('Status1', this.timerState1);
+      localStorage.setItem('Is_Hidden', this.isHidden);
     }),
     window.addEventListener('load', () => {
+      if(localStorage.getItem('Is_Hidden') == 'false') {
+        this.isHidden = false;
+      } else {
+        this.isHidden = true;
+      }
       this.timerState = localStorage.getItem('Status')
       if(this.timerState == 'running') {
         let totalTime = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(localStorage.getItem('Closed-Time')/1000))
@@ -79,7 +90,17 @@ export default {
       } else {
         this.currentTimer = parseInt(localStorage.getItem('Time'))
       }
-      this.formattedTime = this.formatTime(this.currentTimer)
+        this.formattedTime = this.formatTime(this.currentTimer)
+      
+      this.timerState1 = localStorage.getItem('Status1')
+      if(this.timerState1 == 'running') {
+        let totalTime1 = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(localStorage.getItem('Closed-Time')/1000))
+        this.currentTimer1 = parseInt(localStorage.getItem('Time1')) + totalTime1
+        this.tick1();
+      } else {
+        this.currentTimer1 = parseInt(localStorage.getItem('Time1'))
+      }
+        this.formattedTime1 = this.formatTime(this.currentTimer1)
     })
   },
   data () {

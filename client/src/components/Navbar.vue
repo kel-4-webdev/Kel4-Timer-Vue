@@ -14,11 +14,11 @@
       </v-toolbar>
       <v-list>
         <v-list-tile v-for="(lap, index) in history" :key="index">
-          History {{ index + 1 }}: {{ lap.formattedTime }}
+          History Timer 1: {{ lap.formattedTime }}
         </v-list-tile>
 
-        <v-list-tile v-for="(lap1, index1) in history1" :key="index1">
-          History {{ index1 + 1 }}: {{ lap1.formattedTime1 }}
+        <v-list-tile v-for="(lap, index) in history1" :key="index">
+          History Timer 2: {{ lap.formattedTime1 }}
         </v-list-tile>
 
       </v-list>
