@@ -63,6 +63,25 @@ export default {
     Navbar,
     Timer
   },
+  mounted() {
+    window.addEventListener('beforeunload', () => {
+
+      localStorage.setItem('Closed-Time', new Date().getTime());
+      localStorage.setItem('Time', this.currentTimer);
+      localStorage.setItem('Status', this.timerState);
+    }),
+    window.addEventListener('load', () => {
+      this.timerState = localStorage.getItem('Status')
+      if(this.timerState == 'running') {
+        let totalTime = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(localStorage.getItem('Closed-Time')/1000))
+        this.currentTimer = parseInt(localStorage.getItem('Time')) + totalTime
+        this.tick();
+      } else {
+        this.currentTimer = parseInt(localStorage.getItem('Time'))
+      }
+      this.formattedTime = this.formatTime(this.currentTimer)
+    })
+  },
   data () {
     return {
       timerState: 'stopped',
@@ -100,10 +119,11 @@ export default {
         formattedTime: this.formatTime(this.currentTimer)
       });
       this.latestHistory = this.formatTime(this.currentTimer);
-      window.clearInterval(this.ticker)
+      window.clearInterval(this.ticker);
       this.currentTimer = 0;
       this.formattedTime = "00:00:00";
       this.timerState = "stopped";
+      localStorage.clear()
     },
     tick () {
       this.ticker = setInterval(() => {
@@ -116,6 +136,10 @@ export default {
       measuredTime.setSeconds(seconds);
       let MHSTime = measuredTime.toISOString().substr(11, 8);
       return MHSTime;
+    },
+    timeToSecond(varDate) {
+      let oldTime = Math.round(varDate.getTime() / 1000);
+      return oldTime;
     },
     start1 () {
       if (this.timerState1 !== 'running') {
