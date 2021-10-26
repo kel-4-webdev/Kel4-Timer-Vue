@@ -77,28 +77,46 @@ export default {
       localStorage.setItem('Is_Hidden', this.isHidden);
     }),
     window.addEventListener('load', () => {
-      if(localStorage.getItem('Is_Hidden') == 'false') {
+      let getClosedTime = localStorage.getItem('Closed-Time');
+      let getTime = localStorage.getItem('Time');
+      let getStatus = localStorage.getItem('Status');
+      let getTime1 = localStorage.getItem('Time1');
+      let getStatus1 = localStorage.getItem('Status1');
+      let getIsHidden = localStorage.getItem('Is_Hidden');
+
+      if(getClosedTime == null) {getClosedTime = 0}
+      if(getTime == null) {getTime = 0}
+      if(getStatus == null) {getStatus = 'stopped'}
+      if(getTime1 == null) {getTime1 = 0}
+      if(getStatus1 == null) {getStatus1 = 'stopped'}
+      if(getIsHidden == null) {getIsHidden == 'true'}
+      if(getTime == NaN && getStatus == 'running') {
+        getStatus = 'stopped'
+        getTime = 0
+      }
+
+      if(getIsHidden == 'false') {
         this.isHidden = false;
       } else {
         this.isHidden = true;
       }
-      this.timerState = localStorage.getItem('Status')
+      this.timerState = getStatus;
       if(this.timerState == 'running') {
-        let totalTime = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(localStorage.getItem('Closed-Time')/1000))
-        this.currentTimer = parseInt(localStorage.getItem('Time')) + totalTime
+        let totalTime = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(getClosedTime/1000))
+        this.currentTimer = parseInt(getTime) + totalTime
         this.tick();
       } else {
-        this.currentTimer = parseInt(localStorage.getItem('Time'))
+        this.currentTimer = parseInt(getTime)
       }
         this.formattedTime = this.formatTime(this.currentTimer)
       
-      this.timerState1 = localStorage.getItem('Status1')
+      this.timerState1 = getStatus1
       if(this.timerState1 == 'running') {
-        let totalTime1 = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(localStorage.getItem('Closed-Time')/1000))
-        this.currentTimer1 = parseInt(localStorage.getItem('Time1')) + totalTime1
+        let totalTime1 = parseInt(Math.round(new Date().getTime()/1000)) - parseInt(Math.round(getClosedTime/1000))
+        this.currentTimer1 = parseInt(getTime1) + totalTime1
         this.tick1();
       } else {
-        this.currentTimer1 = parseInt(localStorage.getItem('Time1'))
+        this.currentTimer1 = parseInt(getTime1)
       }
         this.formattedTime1 = this.formatTime(this.currentTimer1)
     })
@@ -144,7 +162,7 @@ export default {
       this.currentTimer = 0;
       this.formattedTime = "00:00:00";
       this.timerState = "stopped";
-      localStorage.clear()
+      localStorage.clear();
     },
     tick () {
       this.ticker = setInterval(() => {
