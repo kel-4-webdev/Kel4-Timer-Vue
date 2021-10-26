@@ -10,13 +10,18 @@
 
     <v-navigation-drawer app dark v-model="isDrawerOpen">
       <v-toolbar class="secondary">
-        <v-toolbar-title class="title">Laps</v-toolbar-title>
+        <v-toolbar-title class="title">History</v-toolbar-title>
       </v-toolbar>
-	  <v-list>
-		  <v-list-tile v-for="(lap, index) in laps" :key="index">
-			  Lap {{ index + 1 }}: {{ lap.formattedTime }}
-		  </v-list-tile>
-	  </v-list>
+      <v-list>
+        <v-list-tile v-for="(lap, index) in history" :key="index">
+          History Timer 1: {{ lap.formattedTime }}
+        </v-list-tile>
+
+        <v-list-tile v-for="(lap, index) in history1" :key="index">
+          History Timer 2: {{ lap.formattedTime1 }}
+        </v-list-tile>
+
+      </v-list>
     </v-navigation-drawer>
 	</nav>
 </template>
@@ -24,7 +29,7 @@
 <script>
 export default {
   name: 'Navbar',
-  props: ['laps'],
+  props: ['history', 'history1'],
   data () {
     return {
       isDrawerOpen: false

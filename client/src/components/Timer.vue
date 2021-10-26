@@ -15,13 +15,13 @@
               >
                 <span class="white--text font-weight-bold text-uppercase">Start</span>
               </v-list-tile>
-              <v-list-tile
+              <!-- <v-list-tile
                 class="info mb-3"
                 @click="$emit('lap')"
                 :disabled="state == 'stopped' || state == 'paused'"
               >
                 <span class="white--text font-weight-bold text-uppercase">Lap</span>
-              </v-list-tile>
+              </v-list-tile> -->
               <v-list-tile
                 class="warning mb-3"
                 @click="$emit('pause')"
