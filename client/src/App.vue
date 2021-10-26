@@ -19,13 +19,16 @@
       />
       <div style="width: 100%">
         <v-card
+        
           class="justify-center mb-6"
           :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
           flat
           tile
         >
-          <v-btn color="success" elevation="2" v-on:click="isHidden = false">+</v-btn>
-          <v-btn color="error" elevation="2" v-on:click="isHidden = true">-</v-btn>
+          <v-container style="display:flex; justify-content:center">
+            <v-btn color="success" elevation="2" v-on:click="isHidden = false">+</v-btn>
+            <v-btn color="error" elevation="2" v-on:click="isHidden = true">-</v-btn>
+          </v-container>
         </v-card>
       </div>
      
