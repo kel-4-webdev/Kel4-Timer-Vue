@@ -1,9 +1,5 @@
 # Kelompok 4 Timer Vue.js
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
 
 Kita terkadang lupa waktu ketika mengerjakan suatu pekerjaan, khususnya ketika kita melakukannya di depan gawai kita (komputer/laptop). Dari kejadian tersebut, kami memutuskan untuk membuat sebuah Project : TIMER. Project ini ditujukan sebagai salah satu alat untuk mencatat durasi ketika kita sedang melakukan suatu pekerjaan. Hal tersebut didukung dengan kebiasaan kita untuk tidak mengevaluasi waktu yang dikonsumsi untuk melakukan pekerjaan. Dari tujuan tersebut kami berharap agar siapapun dapat melakukan pencatatan waktu setelah melakukan suatu pekerjaan. Project TIMER ini dibuat berbasis website, sehingga kita harus memerlukan Web Browser untuk mengikuti project ini.
 
