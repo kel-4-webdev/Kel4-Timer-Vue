@@ -181,7 +181,7 @@ export default {
         formattedTime: this.formatTime(this.currentTimer)
       });
       this.latestHistory = this.formatTime(this.currentTimer);
-      this.saveHistory()
+      this.saveHistory();
       window.clearInterval(this.ticker);
       this.currentTimer = 0;
       this.formattedTime = "00:00:00";
@@ -221,6 +221,7 @@ export default {
         formattedTime1: this.formatTime1(this.currentTimer1)
       });
       this.latestHistory1 = this.formatTime1(this.currentTimer1);
+      this.saveHistory();
       window.clearInterval(this.ticker1)
       this.currentTimer1 = 0;
       this.formattedTime1 = "00:00:00";
