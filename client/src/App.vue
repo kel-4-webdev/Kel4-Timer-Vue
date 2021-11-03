@@ -62,6 +62,7 @@
 <script>
 import Navbar from '@/components/Navbar';
 import Timer from '@/components/Timer';
+import HistoryDataService from "@/services/HistoryDataService"
 
 export default {
   name: 'App',
@@ -93,7 +94,7 @@ export default {
       if(getTime1 == null) {getTime1 = 0}
       if(getStatus1 == null) {getStatus1 = 'stopped'}
       if(getIsHidden == null) {getIsHidden == 'true'}
-      if(getTime == NaN && getStatus == 'running') {
+      if(getTime == isNaN() && getStatus == 'running') {
         getStatus = 'stopped'
         getTime = 0
       }
@@ -141,6 +142,11 @@ export default {
       snackbar: false,
       snackbar1: false,
       isHidden : true,
+      history_timer: {
+        timer_id: null,
+        first_timer: 0,
+        second_timer: 0
+      }
     }
   },
   methods: {
@@ -154,6 +160,20 @@ export default {
       window.clearInterval(this.ticker);
       this.timerState = 'paused';
     },
+    saveHistory() {
+      var data = {
+        first_timer: this.currentTimer,
+        second_timer: this.currentTimer1
+      };
+      HistoryDataService.create(data)
+        .then((response) => {
+          this.history.timer_id = response.data.timer_id;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     stop () {
       this.snackbar = true;
       this.history.push({
@@ -161,6 +181,7 @@ export default {
         formattedTime: this.formatTime(this.currentTimer)
       });
       this.latestHistory = this.formatTime(this.currentTimer);
+      this.saveHistory()
       window.clearInterval(this.ticker);
       this.currentTimer = 0;
       this.formattedTime = "00:00:00";
