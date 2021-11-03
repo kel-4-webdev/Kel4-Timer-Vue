@@ -60,7 +60,6 @@
 import Navbar from '@/components/Navbar';
 import Timer from '@/components/Timer';
 import axios from 'axios'
-
 export default {
   name: 'App',
   components: {
@@ -69,7 +68,6 @@ export default {
   },
   mounted() {
     window.addEventListener('beforeunload', () => {
-
       localStorage.setItem('Closed-Time', new Date().getTime());
       localStorage.setItem('Time', this.currentTimer);
       localStorage.setItem('Status', this.timerState);
@@ -84,7 +82,6 @@ export default {
       let getTime1 = localStorage.getItem('Time1');
       let getStatus1 = localStorage.getItem('Status1');
       let getIsHidden = localStorage.getItem('Is_Hidden');
-
       if(getClosedTime == null) {getClosedTime = 0}
       if(getTime == null) {getTime = 0}
       if(getStatus == null) {getStatus = 'stopped'}
@@ -95,7 +92,6 @@ export default {
         getStatus = 'stopped'
         getTime = 0
       }
-
       if(getIsHidden == 'false') {
         this.isHidden = false;
       } else {
@@ -141,6 +137,12 @@ export default {
       snackbar: false,
       snackbar1: false,
       isHidden : true,
+      editFirstTimer:{
+        first_timer: this.data.currentTimer
+      },
+      // editSecondTimer:{
+      //   second_timer: `${this.currentTime1}`
+      // }
     }
   },
   methods: {
@@ -160,15 +162,29 @@ export default {
         seconds: this.currentTimer,
         formattedTime: this.formatTime(this.currentTimer)
       });
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", 'http://localhost:8081/pevn/history', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify({
-        first_timer: this.currentTimer,
-        second_timer: this.currentTimer,
-        created_on: new Date(),
-    }));
       this.latestHistory = this.formatTime(this.currentTimer);
+      // var data_timer1 = {
+      //   first_timer: this.currentTimer
+      // }
+      axios({
+                method: 'post',
+                url: 'http://localhost:3000/pevn/history/',
+                data: this.editFirstTimer
+            })
+      // postFirstTimer.create(data_timer1)
+      //   .then(response =>{
+      //     this.timer_history.first_timer = response.
+      //   })
+            // .then(response =>{
+            //     this.isOperationSuccess = true
+            //     this.dialog = true
+            //     console.log(response.data)
+            // })
+            // .catch(error =>{
+            //     this.isOperationSuccess = false
+            //     this.dialog = true
+            //     console.log(error)
+            // })
       window.clearInterval(this.ticker);
       this.currentTimer = 0;
       this.formattedTime = "00:00:00";

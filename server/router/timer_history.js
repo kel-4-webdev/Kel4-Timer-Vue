@@ -31,8 +31,8 @@ router.get('/:id', async(req, res, next) =>{
 router.post('/', async(req, res, next) => {
     try {
         const history_timer = req.body
-        const sqlText = `INSERT INTO timer_history (first_timer, second_timer, created_on) VALUES ($1, $2, $3) REUTRNING *`
-        const sqlParams = [history_timer.first_timer, history_timer.second_timer, history_timer.created_on]
+        const sqlText = `INSERT INTO timer_history (first_timer, second_timer) VALUES ($1, $2)`
+        const sqlParams = [history_timer.first_timer, history_timer.second_timer]
         const result = (await db.query(sqlText, sqlParams)).rows
         res.json(result)
     } catch (error) {
