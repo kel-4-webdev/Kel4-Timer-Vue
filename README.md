@@ -13,7 +13,15 @@ Terdapat banyak alat lain untuk melakukan pencatatan waktu diluar sana. Namun, d
 
 ## Installation
 
-Untuk project setup Vue maka coba ke folder : 
+Untuk project setup, lakukan npm install pada folder server & client: 
+```bash
+cd server 
+```
+Lalu Lakukan : 
+```bash
+npm install
+```
+
 ```bash
 cd client 
 ```
@@ -23,24 +31,20 @@ npm install
 ```
 
 ## Run It !
-### Compiles and hot-reloads for development
+Untuk menjalankan project, lakukan command berikut.
+### Pada server side
+```
+node server.js
+```
+
+### Pada client
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Akses tautan berikut untuk membuka project
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+http://localhost:8081/
 ```
 
 ## Trouble Like This ?
