@@ -26,7 +26,7 @@ Terakhir edit database profile pada file:
 ```bash
 server\app\config\db.config.js
 ```
-*sesuaikan dengan profile database masing-masing. (untuk table auto create table)
+*sesuaikan dengan profile database masing-masing. (untuk table, auto create table jadi tidak usah diatur)
 
 ### Pada client side
 ```bash
