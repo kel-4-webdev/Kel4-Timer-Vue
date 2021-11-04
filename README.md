@@ -14,6 +14,7 @@ Terdapat banyak alat lain untuk melakukan pencatatan waktu diluar sana. Namun, d
 ## Installation
 
 Untuk project setup, lakukan npm install pada folder server & client: 
+### Pada server side
 ```bash
 cd server 
 ```
@@ -22,6 +23,7 @@ Lalu Lakukan :
 npm install
 ```
 
+### Pada server side
 ```bash
 cd client 
 ```
