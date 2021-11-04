@@ -22,6 +22,11 @@ Lalu Lakukan :
 ```bash
 npm install
 ```
+Terakhir edit database profile pada file:
+```bash
+server\app\config\db.config.js
+```
+*sesuaikan dengan profile database masing-masing. (untuk table auto create table)
 
 ### Pada client side
 ```bash
