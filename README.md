@@ -23,7 +23,7 @@ Lalu Lakukan :
 npm install
 ```
 
-### Pada server side
+### Pada client side
 ```bash
 cd client 
 ```
@@ -39,7 +39,7 @@ Untuk menjalankan project, lakukan command berikut.
 node server.js
 ```
 
-### Pada client
+### Pada client side
 ```
 npm run serve
 ```
